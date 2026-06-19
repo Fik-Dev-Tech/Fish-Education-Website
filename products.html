@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products | AquaHarvest Fish Market</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+ 
+<!-- NAVBAR -->
+<header class="navbar">
+<div class="logo">🐟 AquaHarvest</div>
+
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="products.html">Products</a></li>
+<li><a href="education.html">Education</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</header>
+
+<!-- HERO -->
+<section class="hero" style="height:50vh;">
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+<h1>Fresh Fish Products Marketplace</h1>
+<p>
+Buy high-quality fresh fish directly from sustainable fish farms. Clean, healthy, and affordable for homes, restaurants, and markets.
+</p>
+</div>
+</section>
+
+<!-- SEARCH + FILTER -->
+<section class="section">
+<h2 class="title">Browse Fish Products</h2>
+
+<input type="text" id="searchInput" placeholder="Search fish products..." class="search-bar">
+
+<div class="filters">
+<button onclick="filterProducts('all')">All</button>
+<button onclick="filterProducts('fresh')">Fresh Fish</button>
+<button onclick="filterProducts('smoked')">Smoked Fish</button>
+<button onclick="filterProducts('packaged')">Packaged</button>
+</div>
+</section>
+
+<!-- PRODUCTS GRID -->
+<section class="section dark">
+
+<div class="grid" id="productGrid">
+
+<!-- PRODUCT 1 -->
+<div class="product-card fresh">
+<img src="img/tal.jpeg">
+<h3>Fresh Tilapia</h3>
+
+<p>
+Freshly harvested tilapia from clean pond systems. High protein content, ideal for frying, grilling, and local markets.
+</p>
+
+<strong>UGX 15,000 / KG</strong>
+
+<button onclick="openOrder('Tilapia')">Order Now</button>
+</div>
+
+<!-- PRODUCT 2 -->
+<div class="product-card fresh">
+<img src="img/cat.jpeg">
+<h3>Catfish</h3>
+
+<p>
+Naturally grown catfish with rich taste and high nutritional value. Perfect for restaurants and home cooking.
+</p>
+
+<strong>UGX 20,000 / KG</strong>
+
+<button onclick="openOrder('Catfish')">Order Now</button>
+</div>
+
+<!-- PRODUCT 3 -->
+<div class="product-card fresh">
+<img src="img/nil.jpeg">
+<h3>Nile Perch</h3>
+
+<p>
+Premium Nile Perch sourced from sustainable lake farming systems. Large size and export-quality fish.
+</p>
+
+<strong>UGX 30,000 / KG</strong>
+
+<button onclick="openOrder('Nile Perch')">Order Now</button>
+</div>
+
+<!-- PRODUCT 4 -->
+<div class="product-card smoked">
+<img src="img/smo.jpeg">
+<h3>Smoked Fish</h3>
+
+<p>
+Carefully smoked fish using traditional and modern techniques to preserve taste and freshness.
+</p>
+
+<strong>UGX 25,000 / PACK</strong>
+
+<button onclick="openOrder('Smoked Fish')">Order Now</button>
+</div>
+
+<!-- PRODUCT 5 -->
+<div class="product-card packaged">
+<img src="img/pack.jpeg">
+<h3>Packaged Fish Box</h3>
+
+<p>
+Hygienically packed fish ready for supermarkets, hotels, and export distribution.
+</p>
+
+<strong>UGX 50,000 / BOX</strong>
+
+<button onclick="openOrder('Packaged Fish')">Order Now</button>
+</div>
+
+</div>
+</section>
+
+<!-- ORDER MODAL -->
+<div id="orderModal" class="modal">
+<div class="modal-content">
+
+<span class="close" onclick="closeOrder()">&times;</span>
+
+<h2>Place Your Order</h2>
+<p id="selectedProduct">Product: </p>
+
+<form action="php/save_order.php" method="POST">
+
+<input type="hidden" id="productName" name="product">
+
+<input type="text" name="fullname" placeholder="Full Name" required>
+<input type="tel" name="phone" placeholder="Phone Number" required>
+<input type="text" name="location" placeholder="Delivery Location" required>
+<input type="number" name="quantity" placeholder="Quantity (KG)" required>
+
+<textarea name="message" placeholder="Additional Instructions"></textarea>
+
+<button type="submit">Submit Order</button>
+
+</form>
+
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+<p>© 2026 AquaHarvest Fish Market | Fresh, Clean & Sustainable Fish Supply</p>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+function openOrder(product){
+document.getElementById("orderModal").style.display = "flex";
+document.getElementById("selectedProduct").innerText = "Product: " + product;
+document.getElementById("productName").value = product;
+}
+
+function closeOrder(){
+document.getElementById("orderModal").style.display = "none";
+}
+
+// SEARCH FUNCTION
+document.getElementById("searchInput").addEventListener("keyup", function(){
+let value = this.value.toLowerCase();
+let products = document.querySelectorAll(".product-card");
+
+products.forEach(p => {
+let text = p.innerText.toLowerCase();
+p.style.display = text.includes(value) ? "block" : "none";
+});
+});
+
+// FILTER FUNCTION
+function filterProducts(type){
+let products = document.querySelectorAll(".product-card");
+
+products.forEach(p => {
+if(type === "all"){
+p.style.display = "block";
+}else{
+p.style.display = p.classList.contains(type) ? "block" : "none";
+}
+});
+}
+</script>
+
+</body>
+</html>

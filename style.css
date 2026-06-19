@@ -1,0 +1,175 @@
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+line-height:1.6;
+}
+
+/* NAVBAR */
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.logo{
+font-size:20px;
+font-weight:bold;
+}
+
+.nav-links{
+display:flex;
+list-style:none;
+gap:20px;
+}
+
+.nav-links a{
+color:white;
+text-decoration:none;
+transition:0.3s;
+}
+
+.nav-links a:hover{
+color:#38bdf8;
+}
+
+/* HERO */
+.hero{
+height:90vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
+background:url("../images/hero.jpg") center/cover;
+}
+
+.hero-overlay{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.6);
+}
+
+.hero-content{
+position:relative;
+max-width:800px;
+}
+
+.hero h1{
+font-size:2.8rem;
+margin-bottom:15px;
+}
+
+.hero p{
+margin-bottom:20px;
+}
+
+.btn{
+display:inline-block;
+padding:12px 20px;
+margin:10px;
+background:#38bdf8;
+color:white;
+border-radius:25px;
+text-decoration:none;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:translateY(-3px);
+background:#22c55e;
+}
+
+/* SECTIONS */
+.section{
+padding:60px 20px;
+text-align:center;
+}
+
+.dark{
+background:#111827;
+}
+
+.title{
+margin-bottom:30px;
+font-size:2rem;
+}
+
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+padding:20px;
+}
+
+/* CARDS */
+.card, .product, .box{
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:15px;
+transition:0.3s;
+}
+
+.card:hover, .product:hover, .box:hover{
+transform:translateY(-5px);
+}
+
+.product img{
+width:100%;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+.product-card img{
+width:100%;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+/* SEARCH */
+.search-bar{
+padding:10px;
+width:60%;
+border-radius:10px;
+border:none;
+margin-top:15px;
+}
+
+/* MODAL */
+.modal{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.7);
+justify-content:center;
+align-items:center;
+}
+
+.modal-content{
+background:white;
+color:black;
+padding:20px;
+border-radius:15px;
+width:300px;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:#020617;
+margin-top:30px;
+}
